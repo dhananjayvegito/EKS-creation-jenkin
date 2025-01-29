@@ -1,2 +1,2 @@
-# EKS-creation-jenkin
-Installing Terraform,jenkin and eks.
+# EKS-Terraform-Jenkins
+EKS-Terraform-Jenkins
