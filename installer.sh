@@ -36,7 +36,24 @@ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl 
 
 # Install AWS CLI 
-sudo apt install unzip 
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
+#sudo apt install unzip 
+#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#unzip awscliv2.zip
+#sudo ./aws/install
+
+# Validate Jenkins installation
+echo "Jenkins status:"
+sudo systemctl status jenkins || echo "Jenkins installation may require troubleshooting."
+
+# Validate Terraform installation
+echo "Terraform version:"
+terraform -version || echo "Terraform installation failed."
+
+# Validate kubectl installation
+echo "Kubectl version:"
+kubectl version --client || echo "Kubectl installation failed."
+
+# Validate AWS CLI installation
+#echo "AWS CLI version:"
+#aws --version || echo "AWS CLI installation failed."
+
