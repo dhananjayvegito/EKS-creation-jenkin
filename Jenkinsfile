@@ -16,27 +16,21 @@ pipeline {
         stage('Initializing Terraform'){
             steps{
                 script{
-                    dir('terraform'){
                          sh 'terraform init'
-                    }
                 }
             }
         }
         stage('Validating Terraform'){
             steps{
                 script{
-                    dir('terraform'){
-                         sh 'terraform validate'
-                    }
+                         sh 'terraform validate'                    
                 }
             }
         }
         stage('Previewing the infrastructure'){
             steps{
                 script{
-                    dir('terraform'){
                          sh 'terraform plan'
-                    }
                     input(message: "Approve?", ok: "proceed")
                 }
             }
@@ -44,9 +38,7 @@ pipeline {
         stage('Create/Destroy an EKS cluster'){
             steps{
                 script{
-                    dir('terraform'){
                          sh 'terraform $action --auto-approve'
-                    }
                 }
             }
         }
